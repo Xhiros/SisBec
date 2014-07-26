@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @family.name %>
+</p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @family.dni %>
+</p>
+
+<p>
+  <strong>Relationship:</strong>
+  <%= @family.relationship %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @family.student_id %>
+</p>
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %>

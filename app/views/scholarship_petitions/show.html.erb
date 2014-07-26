@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @scholarship_petition.student_id %>
+</p>
+
+<p>
+  <strong>Scholarship:</strong>
+  <%= @scholarship_petition.scholarship_id %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @scholarship_petition.approved %>
+</p>
+
+<%= link_to 'Edit', edit_scholarship_petition_path(@scholarship_petition) %> |
+<%= link_to 'Back', scholarship_petitions_path %>

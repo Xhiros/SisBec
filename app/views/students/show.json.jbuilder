@@ -1,0 +1,1 @@
+json.extract! @student, :id, :firstName, :lastName, :dni, :career, :otherCareer, :fileNumber, :address, :department, :telephone, :cellphone, :dwelling, :rental, :economicSituation, :children, :dependent, :schoolDays, :familyGroup, :income, :minors, :disabilityOrIllness, :clarifications, :vehicles, :card_id, :created_at, :updated_at

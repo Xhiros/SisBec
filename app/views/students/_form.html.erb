@@ -1,0 +1,110 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id, :value => current_user.id, :disabled => 'disabled' %>
+  </div>
+  <div class="field">
+    <%= f.label :firstName, 'Nombres' %><br>
+    <%= f.text_field :firstName %>
+  </div>
+  <div class="field">
+    <%= f.label :lastName, 'Apellido' %><br>
+    <%= f.text_field :lastName %>
+  </div>
+  <div class="field">
+    <%= f.label :dni, 'DNI' %><br>
+    <%= f.text_field :dni %>
+  </div>
+  <div class="field">
+    <%= f.label :career, 'Carrera' %><br>
+    <%= f.select :career, ["Sistemas","Electrónica","Electromecánica","Civil","Química","Otra"] %>
+  </div>
+  <div class="field">
+    <%= f.label :otherCareer, 'Otra carrera' %><br>
+    <%= f.text_field :otherCareer, placeholder: 'Completá si marcaste "otra" en el item anterior'  %>
+  </div>
+  <div class="field">
+    <%= f.label :fileNumber, 'Legajo' %><br>
+    <%= f.text_field :fileNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :address, 'Dirección' %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :department, 'Localidad' %><br>
+    <%= f.text_field :department %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone, 'Teléfono' %><br>
+    <%= f.text_field :telephone %>
+  </div>
+  <div class="field">
+    <%= f.label :cellphone, 'Celular' %><br>
+    <%= f.text_field :cellphone %>
+  </div>
+  <div class="field">
+    <%= f.label :dwelling, 'Vivienda' %><br>
+    <%= f.text_field :dwelling %>
+  </div>
+  <div class="field">
+    <%= f.label :rental, 'Alquiler' %><br>
+    <%= f.text_field :rental %>
+  </div>
+  <div class="field">
+    <%= f.label :economicSituation %><br>
+    <%= f.text_field :economicSituation %>
+  </div>
+  <div class="field">
+    <%= f.label :children %><br>
+    <%= f.number_field :children %>
+  </div>
+  <div class="field">
+    <%= f.label :dependent %><br>
+    <%= f.number_field :dependent %>
+  </div>
+  <div class="field">
+    <%= f.label :schoolDays %><br>
+    <%= f.number_field :schoolDays %>
+  </div>
+  <div class="field">
+    <%= f.label :familyGroup %><br>
+    <%= f.number_field :familyGroup %>
+  </div>
+  <div class="field">
+    <%= f.label :income %><br>
+    <%= f.text_field :income %>
+  </div>
+  <div class="field">
+    <%= f.label :minors %><br>
+    <%= f.number_field :minors %>
+  </div>
+  <div class="field">
+    <%= f.label :disabilityOrIllness %><br>
+    <%= f.text_field :disabilityOrIllness %>
+  </div>
+  <div class="field">
+    <%= f.label :clarifications %><br>
+    <%= f.text_area :clarifications %>
+  </div>
+  <div class="field">
+    <%= f.label :vehicles %><br>
+    <%= f.number_field :vehicles %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

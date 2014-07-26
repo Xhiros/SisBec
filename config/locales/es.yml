@@ -1,0 +1,15 @@
+es:
+  hello: "Hola Mundo"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "no puede estar en blanco."
+              taken: 'ya está en uso.'
+            password:
+              blank: "no puede estar en blanco."
+              too_short: 'demasiado corta, al menos 8 caracteres.'
+            password_confirmation:
+              confirmation: 'no coincide con el password.'

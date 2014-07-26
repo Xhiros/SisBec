@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SisBec</title>
+  <%= stylesheet_link_tag    "welcome", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "welcome", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <% if user_signed_in? %>
+      Logueado como <strong><%= current_user.username %></strong>.
+      <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <%= link_to "Sign out", destroy_user_session_path %>
+            <% if !(Student.checkStudent(current_user.id)) && !(request.url.end_with?('/students/new')) %>
+              <p class="alert alert-danger" role="alert"> No has creado tu perfil de alumno, has <%= link_to 'click aquí', new_student_path, class:'alert-link' %> para ir al formulario de registro </p>
+            <% end %>
+    <% else %>
+        <%= link_to "Nuevo Usuario", new_user_registration_path, :class => 'btn btn-default'  %> |
+        <%= link_to "Logearse", new_user_session_path, :class => 'btn'  %>
+    <% end %>
+  
+  <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+  <% end %>
+
+  <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+  <% end %>
+
+<%= yield %>
+
+</body>
+</html>

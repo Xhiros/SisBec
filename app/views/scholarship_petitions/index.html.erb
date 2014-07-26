@@ -1,0 +1,31 @@
+<h1>Listing scholarship_petitions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Scholarship</th>
+      <th>Approved</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scholarship_petitions.each do |scholarship_petition| %>
+      <tr>
+        <td><%= scholarship_petition.student_id %></td>
+        <td><%= scholarship_petition.scholarship_id %></td>
+        <td><%= scholarship_petition.approved %></td>
+        <td><%= link_to 'Show', scholarship_petition %></td>
+        <td><%= link_to 'Edit', edit_scholarship_petition_path(scholarship_petition) %></td>
+        <td><%= link_to 'Destroy', scholarship_petition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scholarship petition', new_scholarship_petition_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@scholarship_petition) do |f| %>
+  <% if @scholarship_petition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scholarship_petition.errors.count, "error") %> prohibited this scholarship_petition from being saved:</h2>
+
+      <ul>
+      <% @scholarship_petition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :student_id %><br>
+    <%= f.text_field :student_id %>
+  </div>
+  <div class="field">
+    <%= f.label :scholarship_id %><br>
+    <%= f.text_field :scholarship_id %>
+  </div>
+  <div class="field">
+    <%= f.label :approved %><br>
+    <%= f.check_box :approved %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

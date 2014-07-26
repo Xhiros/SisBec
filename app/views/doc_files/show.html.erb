@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @doc_file.name %>
+</p>
+
+<p>
+  <strong>Clarification:</strong>
+  <%= @doc_file.clarification %>
+</p>
+
+<p>
+  <strong>Docowner:</strong>
+  <%= @doc_file.docOwner %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @doc_file.student_id %>
+</p>
+
+<%= link_to 'Edit', edit_doc_file_path(@doc_file) %> |
+<%= link_to 'Back', doc_files_path %>
