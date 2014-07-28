@@ -1,119 +1,133 @@
 <p id="notice"><%= notice %></p>
 
+<% if @count > 0 %>
+  <p class="alert alert-warning" role="alert"> No has cargado los datos de tu Grupo familiar, has <%= link_to 'click aquí', new_family_path, class:'alert-link' %> para ir al formulario de registro (aún falta cargar <%= @count %> más) </p>
+<% end %>
+<% if @count < 0 %>
+  <p class="alert alert-danger" role="alert"> Tienes más familiares cargados que los que tienes declarados, te sobran <%= -1 * @count %> familiares, mata alguno) </p>
+<% end %>
+
+<h2>Tus datos</h2>
 <p>
-  <strong>Firstname:</strong>
+  <strong>ID:</strong>
+  <%= @student.id %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
   <%= @student.firstName %>
 </p>
 
 <p>
-  <strong>Lastname:</strong>
+  <strong>Apellido:</strong>
   <%= @student.lastName %>
 </p>
 
 <p>
-  <strong>Dni:</strong>
+  <strong>Número de documento:</strong>
   <%= @student.dni %>
 </p>
 
 <p>
-  <strong>Career:</strong>
+  <strong>Carrera:</strong>
   <%= @student.career %>
 </p>
 
 <p>
-  <strong>Othercareer:</strong>
+  <strong>Otra carrera:</strong>
   <%= @student.otherCareer %>
 </p>
 
 <p>
-  <strong>Filenumber:</strong>
+  <strong>Legajo:</strong>
   <%= @student.fileNumber %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Dirección:</strong>
   <%= @student.address %>
 </p>
 
 <p>
-  <strong>Department:</strong>
+  <strong>Departamento:</strong>
   <%= @student.department %>
 </p>
 
 <p>
-  <strong>Telephone:</strong>
+  <strong>Teléfono fijo:</strong>
   <%= @student.telephone %>
 </p>
 
 <p>
-  <strong>Cellphone:</strong>
+  <strong>Teléfono celular:</strong>
   <%= @student.cellphone %>
 </p>
 
 <p>
-  <strong>Dwelling:</strong>
+  <strong>Vivienda:</strong>
   <%= @student.dwelling %>
 </p>
 
 <p>
-  <strong>Rental:</strong>
+  <strong>Monto que pagas por el alquiler:</strong>
   <%= @student.rental %>
 </p>
 
 <p>
-  <strong>Economicsituation:</strong>
+  <strong>Situación Económica:</strong>
   <%= @student.economicSituation %>
 </p>
 
 <p>
-  <strong>Children:</strong>
+  <strong>Hijos:</strong>
   <%= @student.children %>
 </p>
 
 <p>
-  <strong>Dependent:</strong>
+  <strong>Personas a Cargo:</strong>
   <%= @student.dependent %>
 </p>
 
 <p>
-  <strong>Schooldays:</strong>
+  <strong>Cantidad de días de Cursado:</strong>
   <%= @student.schoolDays %>
 </p>
 
 <p>
-  <strong>Familygroup:</strong>
+  <strong>Grupo Familiar (Personas conviviendo bajo el mismo techo):</strong>
   <%= @student.familyGroup %>
 </p>
 
 <p>
-  <strong>Income:</strong>
+  <strong>Ingresos (Por becas-trabajos-otros):</strong>
   <%= @student.income %>
 </p>
 
 <p>
-  <strong>Minors:</strong>
+  <strong>Cuántos menores de 18 años o jubilados hay en tu vivienda:</strong>
   <%= @student.minors %>
 </p>
 
 <p>
-  <strong>Disabilityorillness:</strong>
+  <strong>Discapactidad o enfermedad crónica:</strong>
   <%= @student.disabilityOrIllness %>
 </p>
 
 <p>
-  <strong>Clarifications:</strong>
-  <%= @student.clarifications %>
-</p>
-
-<p>
-  <strong>Vehicles:</strong>
+  <strong>Vehículos:</strong>
   <%= @student.vehicles %>
 </p>
 
 <p>
-  <strong>Card:</strong>
+  <strong>Otros Datos:</strong>
+  <%= @student.clarifications %>
+</p>
+
+
+<p>
+  <strong>Número de Tarjeta CETEM (Déjalo vacio si no tiene aún la Tarjeta CETEM):</strong>
   <%= @student.card_id %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<%= link_to 'Editar Información', edit_student_path(@student) %> |
+<%= link_to 'Volver a pantalla principal', root_url %>

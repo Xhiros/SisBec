@@ -3,5 +3,6 @@ class LunchPetitionsController < ApplicationController
   end
 
   def newPetition
+    @prueba = LuchPetition.consultar(params[:id])
   end
 end

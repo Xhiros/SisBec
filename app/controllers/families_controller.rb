@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   before_action :set_family, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /families
   # GET /families.json
   def index
@@ -25,10 +25,11 @@ class FamiliesController < ApplicationController
   # POST /families.json
   def create
     @family = Family.new(family_params)
+    @family.student_id = current_user.student.id
 
     respond_to do |format|
       if @family.save
-        format.html { redirect_to @family, notice: 'Family was successfully created.' }
+        format.html { redirect_to @family, notice: 'Familiar agregado correctamente.' }
         format.json { render action: 'show', status: :created, location: @family }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class FamiliesController < ApplicationController
   def update
     respond_to do |format|
       if @family.update(family_params)
-        format.html { redirect_to @family, notice: 'Family was successfully updated.' }
+        format.html { redirect_to @family, notice: 'Modificación hecha correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

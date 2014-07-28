@@ -1,0 +1,35 @@
+<h1 class='well'>Adminzone - Vista de Usuarios</h1>
+
+<table class='tabla table table-stripped table-bordered table-condensed' >
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Username</th>
+      <th>email</th>
+      <th>Student</th>
+      <th>Admin?</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if Student.checkStudent(user.id) %>
+            <%= link_to user.student.fileNumber, user.student  %>
+          <% else %>
+          <%= 'Perfil no creado' %>
+          <% end %>
+        </td>
+        <td><%= user.admin ? 'SI' : 'NO' %></td>
+        <td><%= %></td>
+        <td><%=  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

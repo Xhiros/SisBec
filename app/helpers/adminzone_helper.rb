@@ -1,0 +1,2 @@
+module AdminzoneHelper
+end

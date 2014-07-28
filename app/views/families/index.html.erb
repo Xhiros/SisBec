@@ -1,12 +1,12 @@
-<h1>Listing families</h1>
+<h1>Enlistando Familiares</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Dni</th>
-      <th>Relationship</th>
-      <th>Student</th>
+      <th>Parentesco</th>
+      <th>Estudiante¿?</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,9 +20,9 @@
         <td><%= family.dni %></td>
         <td><%= family.relationship %></td>
         <td><%= family.student_id %></td>
-        <td><%= link_to 'Show', family %></td>
-        <td><%= link_to 'Edit', edit_family_path(family) %></td>
-        <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', family %></td>
+        <td><%= link_to 'Editar', edit_family_path(family) %></td>
+        <td><%= link_to 'Eliminar', family, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Family', new_family_path %>
+<%= link_to 'Nuevo familiar', new_family_path %>

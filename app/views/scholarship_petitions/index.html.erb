@@ -18,9 +18,9 @@
         <td><%= scholarship_petition.student_id %></td>
         <td><%= scholarship_petition.scholarship_id %></td>
         <td><%= scholarship_petition.approved %></td>
-        <td><%= link_to 'Show', scholarship_petition %></td>
-        <td><%= link_to 'Edit', edit_scholarship_petition_path(scholarship_petition) %></td>
-        <td><%= link_to 'Destroy', scholarship_petition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', scholarship_petition %></td>
+        <td><%= link_to 'Editar', edit_scholarship_petition_path(scholarship_petition) %></td>
+        <td><%= link_to 'Eliminar', scholarship_petition, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Scholarship petition', new_scholarship_petition_path %>
+<%= link_to 'Petición nueva de escolaridad', new_scholarship_petition_path %>

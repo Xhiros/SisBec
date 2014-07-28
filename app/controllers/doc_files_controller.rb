@@ -1,5 +1,6 @@
 class DocFilesController < ApplicationController
   before_action :set_doc_file, only: [:show, :edit, :update, :destroy]
+  File_URL = "students_files/";
 
   # GET /doc_files
   # GET /doc_files.json

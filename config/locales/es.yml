@@ -5,11 +5,46 @@ es:
       models:
         user:
           attributes:
+            username:
+              taken: "ya está en uso."
+              blank: "no puede estar en blanco."
+              invalid: "formato incorrecto."
             email:
               blank: "no puede estar en blanco."
               taken: 'ya está en uso.'
             password:
-              blank: "no puede estar en blanco."
+              blank: "no puede estar en blanco y debe tener al menos 8 caracteres."
               too_short: 'demasiado corta, al menos 8 caracteres.'
             password_confirmation:
               confirmation: 'no coincide con el password.'
+              blank: "no puede estar en blanco."
+        student:
+          attributes:
+            firstName:
+              blank: "no puede estar en blanco."
+            lastName:
+              blank: "no puede estar en blanco."
+            dni:
+              blank: "no puede estar en blanco."
+            career:
+              blank: "no puede estar en blanco."
+            fileNumber:
+              blank: "no puede estar en blanco."
+            address:
+              blank: "no puede estar en blanco."
+            department:
+              blank: "no puede estar en blanco."
+            user_id:
+              taken: "ya has creado un perfil de estudiante"
+            familyGroup:
+              blank: "no puede estar en blanco"
+        family:
+          attributes:
+            name:
+              blank: "no puede estar en blanco"
+            dni:
+              blank: "no puede estar en blanco"
+            relationship:
+              blank: "no puede estar en blanco"
+            student_id:
+              blank: "no puede estar en blanco"

@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @family.name %>
 </p>
 
 <p>
-  <strong>Dni:</strong>
+  <strong>Número de documento:</strong>
   <%= @family.dni %>
 </p>
 
 <p>
-  <strong>Relationship:</strong>
+  <strong>Parentesco:</strong>
   <%= @family.relationship %>
 </p>
 
 <p>
-  <strong>Student:</strong>
+  <strong>Id Estudiante:</strong>
   <%= @family.student_id %>
 </p>
 
-<%= link_to 'Edit', edit_family_path(@family) %> |
-<%= link_to 'Back', families_path %>
+
+<%= link_to 'Editar', edit_family_path(@family) %> |
+<%= link_to 'Atrás', families_path %>

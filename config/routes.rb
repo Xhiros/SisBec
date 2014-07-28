@@ -1,4 +1,12 @@
 SisBec::Application.routes.draw do
+  #AdminZONE_controller (solo para users admin)
+  get "adminzone/index"
+  post "adminzone/index"
+  put "adminzone/index"
+  get "adminzone/userlist"
+  post "adminzone/userlist"
+  
+  #Otras rutas
   get "lunch_petitions/show"
   get "lunch_petitions/newPetition"
   resources :scholarships

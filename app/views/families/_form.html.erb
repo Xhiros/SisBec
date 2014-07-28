@@ -1,7 +1,7 @@
 <%= form_for(@family) do |f| %>
   <% if @family.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@family.errors.count, "error") %> prohibited this family from being saved:</h2>
+      <h2><%= pluralize(@family.errors.count, "error") %> No se puede guardar Integrante del Grupo familiar:</h2>
 
       <ul>
       <% @family.errors.full_messages.each do |msg| %>
@@ -21,11 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :relationship %><br>
-    <%= f.text_field :relationship %>
-  </div>
-  <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
+    <%= f.select :relationship, ['Padre','Madre','Hermano/a','Hijo/a','Cónyugue','Abuelo/a','Otra relación'] %>
   </div>
   <div class="actions">
     <%= f.submit %>

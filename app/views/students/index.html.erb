@@ -1,31 +1,16 @@
-<h1>Listing students</h1>
+<h1>Lista de Estudiantes</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Dni</th>
-      <th>Career</th>
-      <th>Othercareer</th>
-      <th>Filenumber</th>
-      <th>Address</th>
-      <th>Department</th>
-      <th>Telephone</th>
-      <th>Cellphone</th>
-      <th>Dwelling</th>
-      <th>Rental</th>
-      <th>Economicsituation</th>
-      <th>Children</th>
-      <th>Dependent</th>
-      <th>Schooldays</th>
-      <th>Familygroup</th>
-      <th>Income</th>
-      <th>Minors</th>
-      <th>Disabilityorillness</th>
-      <th>Clarifications</th>
-      <th>Vehicles</th>
-      <th>Card</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>DNI</th>
+      <th>Carrera</th>
+      <th>Legajo</th>
+      <th>ID Tarjeta</th>
+      <th>Username</th>
+      <th>E-mail</th>
       <th></th>
       <th></th>
       <th></th>
@@ -39,28 +24,13 @@
         <td><%= student.lastName %></td>
         <td><%= student.dni %></td>
         <td><%= student.career %></td>
-        <td><%= student.otherCareer %></td>
         <td><%= student.fileNumber %></td>
-        <td><%= student.address %></td>
-        <td><%= student.department %></td>
-        <td><%= student.telephone %></td>
-        <td><%= student.cellphone %></td>
-        <td><%= student.dwelling %></td>
-        <td><%= student.rental %></td>
-        <td><%= student.economicSituation %></td>
-        <td><%= student.children %></td>
-        <td><%= student.dependent %></td>
-        <td><%= student.schoolDays %></td>
-        <td><%= student.familyGroup %></td>
-        <td><%= student.income %></td>
-        <td><%= student.minors %></td>
-        <td><%= student.disabilityOrIllness %></td>
-        <td><%= student.clarifications %></td>
-        <td><%= student.vehicles %></td>
         <td><%= student.card_id %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= User.find(student.user_id).username %></td>
+        <td><%= User.find(student.user_id).email %></td>
+        <td><%= link_to 'Ver', student %></td>
+        <td><%= link_to 'Editar', edit_student_path(student) %></td>
+        <td><%= link_to 'Borrar', student, method: :delete, data: { confirm: 'Seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -68,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Student', new_student_path %>
+
