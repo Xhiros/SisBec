@@ -129,5 +129,5 @@
   <%= @student.card_id %>
 </p>
 
-<%= link_to 'Editar Información', edit_student_path(@student) %> |
-<%= link_to 'Volver a pantalla principal', root_url %>
+<%= link_to 'Editar Información', edit_student_path(@student), class:'btn btn-default' %> 
+<%= link_to 'Volver', students_url, class:'btn btn-default' %>

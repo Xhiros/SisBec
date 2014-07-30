@@ -1,11 +1,12 @@
 class DocFilesController < ApplicationController
   before_action :set_doc_file, only: [:show, :edit, :update, :destroy]
-  File_URL = "students_files/";
+  before_action :authenticate_user!
+  File_URL = "private/students_files/";
 
   # GET /doc_files
   # GET /doc_files.json
   def index
-    @doc_files = DocFile.all
+    @doc_files = DocFile.where(student_id: current_user.student.id).order('created_at DESC')
   end
 
   # GET /doc_files/1
@@ -25,13 +26,18 @@ class DocFilesController < ApplicationController
   # POST /doc_files
   # POST /doc_files.json
   def create
-    @doc_file = DocFile.new(doc_file_params)
+    @pre_form = DocFile.new(doc_file_params)
+    @doc_file = DocFile.correctionFile(@pre_form, current_user.student, File_URL)
 
     respond_to do |format|
-      if @doc_file.save
-        format.html { redirect_to @doc_file, notice: 'Doc file was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @doc_file }
+      if DocFile.uploadFile(@pre_form.docOwner, @doc_file.name, current_user.student.fileNumber, File_URL) && @doc_file.save
+        format.html { redirect_to @pre_form, notice: 'Archivo agregado correctamente.' }
+        format.json { render action: 'index', status: :created, location: @pre_form }
       else
+        begin
+         File.delete( @doc_file.docOwner)
+        rescue
+        end
         format.html { render action: 'new' }
         format.json { render json: @doc_file.errors, status: :unprocessable_entity }
       end
@@ -55,7 +61,12 @@ class DocFilesController < ApplicationController
   # DELETE /doc_files/1
   # DELETE /doc_files/1.json
   def destroy
+    begin
+      File.delete( @doc_file.docOwner)
+    rescue
+    end
     @doc_file.destroy
+    
     respond_to do |format|
       format.html { redirect_to doc_files_url }
       format.json { head :no_content }

@@ -1,5 +1,4 @@
 es:
-  hello: "Hola Mundo"
   activerecord:
     errors:
       models:
@@ -48,3 +47,9 @@ es:
               blank: "no puede estar en blanco"
             student_id:
               blank: "no puede estar en blanco"
+        doc_file:
+          attributes:
+            name:
+              taken: "ya está en uso."
+              blank: "no puede estar en blanco."
+              too_long: 'demasiado largo, maximo 30 caracteres'

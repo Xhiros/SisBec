@@ -12,18 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
+    <%= f.label :scholarship_type, 'Beca que solicita:' %><br>
+    <%= f.select :scholarship_type, ['Comedor','Trabajo','Fotocopias'] %>
   </div>
-  <div class="field">
-    <%= f.label :scholarship_id %><br>
-    <%= f.text_field :scholarship_id %>
-  </div>
-  <div class="field">
-    <%= f.label :approved %><br>
-    <%= f.check_box :approved %>
-  </div>
+ 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Enviar', class:'btn btn-success' %>
   </div>
 <% end %>

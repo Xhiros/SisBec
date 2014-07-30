@@ -4,7 +4,7 @@ class FamiliesController < ApplicationController
   # GET /families
   # GET /families.json
   def index
-    @families = Family.all
+    @families = Family.where(student_id: current_user.student.id).order('created_at DESC')
   end
 
   # GET /families/1

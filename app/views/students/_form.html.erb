@@ -12,95 +12,95 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :firstName, 'Nombres' %><br>
+    <%= f.label :firstName, 'Nombres:' %>
     <%= f.text_field :firstName %>
   </div>
   <div class="field">
-    <%= f.label :lastName, 'Apellido' %><br>
+    <%= f.label :lastName, 'Apellido:' %>
     <%= f.text_field :lastName %>
   </div>
   <div class="field">
-    <%= f.label :dni, 'Número de documento' %><br>
+    <%= f.label :dni, 'Número de documento:' %>
     <%= f.text_field :dni %>
   </div>
   <div class="field">
-    <%= f.label :career, 'Carrera' %><br>
+    <%= f.label :career, 'Carrera:' %>
     <%= f.select :career, ["Sistemas","Electrónica","Electromecánica","Civil","Química","Otra"] %>
   </div>
   <div class="field">
-    <%= f.label :otherCareer, 'Otra carrera' %><br>
+    <%= f.label :otherCareer, 'Otra carrera:' %>
     <%= f.text_field :otherCareer, placeholder: 'Completá si marcaste "otra" en el item anterior'  %>
   </div>
   <div class="field">
-    <%= f.label :fileNumber, 'Legajo' %><br>
+    <%= f.label :fileNumber, 'Legajo:' %>
     <%= f.text_field :fileNumber %>
   </div>
   <div class="field">
-    <%= f.label :address, 'Dirección' %><br>
+    <%= f.label :address, 'Dirección:' %>
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :department, 'Localidad' %><br>
+    <%= f.label :department, 'Localidad:' %>
     <%= f.text_field :department %>
   </div>
   <div class="field">
-    <%= f.label :telephone, 'Teléfono' %><br>
-    <%= f.text_field :telephone %>
+    <%= f.label :telephone, 'Teléfono' %>
+    <%= f.telephone_field :telephone %>
   </div>
   <div class="field">
-    <%= f.label :cellphone, 'Celular' %><br>
-    <%= f.text_field :cellphone %>
+    <%= f.label :cellphone, 'Celular:' %>
+    <%= f.telephone_field :cellphone %>
   </div>
   <div class="field">
-    <%= f.label :dwelling, 'Vivienda' %><br>
-    <%= f.text_field :dwelling %>
+    <%= f.label :dwelling, 'Vivienda:' %>
+    <%= f.select :dwelling, ['Propia','Alquilada'] %>
   </div>
   <div class="field">
-    <%= f.label :rental, 'Monto que pagas por la vivienda' %><br>
-    <%= f.text_field :rental %>
+    <%= f.label :rental, 'Alquiler:' %>
+    <%= f.number_field :rental, in: 0...1000000, :value => 0 %>
   </div>
   <div class="field">
-    <%= f.label :economicSituation, "Situación Económica" %><br>
+    <%= f.label :economicSituation, "Situación Económica: " %>
     <%= f.text_field :economicSituation %>
   </div>
   <div class="field">
-    <%= f.label :children, "Cantidad de hijos" %><br>
-    <%= f.number_field :children %>
+    <%= f.label :children, "Cantidad de hijos: " %>
+    <%= f.number_field :children, in: 0...100, :value => 0 %>
   </div>
   <div class="field">
-    <%= f.label :dependent, "Personas a cargo" %><br>
-    <%= f.number_field :dependent %>
+    <%= f.label :dependent, "Personas a cargo: " %>
+    <%= f.number_field :dependent, in: 0...20, :value => 0 %>
   </div>
   <div class="field">
-    <%= f.label :schoolDays, "Días de cursado" %><br>
+    <%= f.label :schoolDays, "Días de cursado: " %>
     <%= f.number_field :schoolDays %>
   </div>
   <div class="field">
-    <%= f.label :familyGroup, "Grupo Familiar (Personas conviviendo bajo el mismo techo)" %><br>
-    <%= f.number_field :familyGroup, in: 0...100 %>
+    <%= f.label :familyGroup, "Grupo Familiar (Personas conviviendo bajo el mismo techo): " %>
+    <%= f.number_field :familyGroup, in: 0...100, :value => 0 %>
   </div>
   <div class="field">
-    <%= f.label :income, "Ingresos (Por becas-trabajos-otros)" %><br>
+    <%= f.label :income, "Ingresos (Por becas-trabajos-otros): " %>
     <%= f.text_field :income %>
   </div>
   <div class="field">
-    <%= f.label :minors, "Cuántos menores de 18 años o jubilados hay en tu vivienda" %><br>
+    <%= f.label :minors, "Cuántos menores de 18 años o jubilados hay en tu vivienda: " %>
     <%= f.number_field :minors %>
   </div>
   <div class="field">
-    <%= f.label :disabilityOrIllness, "Discapactidad o enfermedad crónica" %><br>
+    <%= f.label :disabilityOrIllness, "Discapactidad o enfermedad crónica: " %>
     <%= f.text_field :disabilityOrIllness %>
   </div>
   <div class="field">
-    <%= f.label :vehicles, "Vehículos" %><br>
+    <%= f.label :vehicles, "Vehículos: " %>
     <%= f.number_field :vehicles %>
   </div>
   <div class="field">
-    <%= f.label :clarifications, "Otros Datos" %><br>
+    <%= f.label :clarifications, "Otros Datos: " %> <br>
     <%= f.text_area :clarifications %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Crear Perfil" %>
+    <%= f.submit "Enviar" %>
   </div>
 <% end %>

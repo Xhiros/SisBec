@@ -1,41 +1,127 @@
-<h1>Lista de Estudiantes</h1>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>DNI</th>
-      <th>Carrera</th>
-      <th>Legajo</th>
-      <th>ID Tarjeta</th>
-      <th>Username</th>
-      <th>E-mail</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="page-header">
+  <h1 class='well' > <%= @student.lastName + ', ' + @student.firstName %> <small>Aquí tienes un resumen de tu información</small> </h1>
+</div>
 
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.firstName %></td>
-        <td><%= student.lastName %></td>
-        <td><%= student.dni %></td>
-        <td><%= student.career %></td>
-        <td><%= student.fileNumber %></td>
-        <td><%= student.card_id %></td>
-        <td><%= User.find(student.user_id).username %></td>
-        <td><%= User.find(student.user_id).email %></td>
-        <td><%= link_to 'Ver', student %></td>
-        <td><%= link_to 'Editar', edit_student_path(student) %></td>
-        <td><%= link_to 'Borrar', student, method: :delete, data: { confirm: 'Seguro?' } %></td>
-      </tr>
+<div class="container">
+    <div class="row">
+
+<div class="panel panel-primary col-md-4">
+  <div class="panel-heading ">
+    <h3 class="panel-title">Resumen de tu pefil</h3>
+  </div>
+  <div class="panel-body">
+    <p>Legajo: <%= @student.fileNumber %> </p>
+    <p>DNI: <%= @student.dni %></p>
+    <p>Carrera: <%= @student.career == 'Otra' ? @student.otherCareer : @student.career %></p>
+    <p>Tarjeta: <%= @student.card_id == nil ? 'No asociada' : @student.card_id.split(//).last(5).join %></p>
+    <%= link_to @student, class: "btn btn-info" do %>
+      <span class="glyphicon glyphicon-info-sign"></span> Ver perfil completo
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+      
+     <div>
+  <div class="panel panel-primary col-md-4">
+    <div class="panel-heading">
+      <h3 class="panel-title"> Archivos subidos </h3>
+    </div>
+    <div class="panel-body">
+  
+      <% @docFiles.each do |doc_file| %>
+        <p>
+          Nombre: <%= doc_file.name %>
+          <%=  link_to "Descargar", download_students_path  %>
+          <%= link_to "Archivo", doc_file.docOwner, :target => '_blank' %>
+          <%= link_to "Info", doc_file %>
+          <%= link_to 'Destroy', doc_file, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      <% end %>
+      </div>
+    </div>
+  </div>   
+  
+   <div class="row">
+  <div class="panel panel-primary col-md-4">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tus becas actuales</h3>
+  </div>
+  <div class="panel-body">
+  <% unless @scholarships.count == 0 %>
+  <table class='tabla table table-stripped table-bordered' >
+    <thead>
+      <tr>
+        <th>Beca</th>
+        <th>Fcha. Inicio</th>
+        <th>Fcha. Fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @scholarships.each do |scholarship| %>
+        <tr>
+          <td><%= link_to scholarship.scholarship_type, scholarship_petition %></td>
+          <td><%= scholarship.starting %></td>
+          <td><%= scholarship.ending %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    No tienes becas todavía.
+  <% end %>
+</div>
+</div>
 
-<br>
+  <div class="panel panel-primary col-md-4">
+    <div class="panel-heading">
+      <h3 class="panel-title"> Solicitudes de becas (Últimas 5) </h3>
+    </div>
+    <div class="panel-body">
+      <% unless @scholarship_petitions.count == 0 %>
+      <table class='tabla table table-stripped table-bordered' >
+        <thead>
+          <tr>
+            <th>Beca</th>
+            <th>Fcha. de Solicitud</th>
+            <th>Estado</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @scholarship_petitions.each do |scholarship_petition| %>
+            <tr>
+              <td><%= link_to scholarship_petition.scholarship_type, scholarship_petition %></td>
+              <td><%= scholarship_petition.created_at %></td>
+              <td><%= ScholarshipPetition.defState(scholarship_petition.approved) %></td>
+              <td><%= link_to 'Editar', edit_scholarship_petition_path(scholarship_petition) %></td>
+              <td><%= link_to 'Eliminar', scholarship_petition, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% else %>
+        No has solicitado ninguna beca todavía.
+      <% end %>
+      <%= link_to 'Solicitar beca', new_scholarship_petition_path, class:'btn btn-primary' %>
+    </div>
+  </div>
+</div>  
+    
+  
+      
+  </div>
+</div>
+
+
+
+
+
+        
+             
+ 
+
+
 
 

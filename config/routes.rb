@@ -1,10 +1,17 @@
 SisBec::Application.routes.draw do
-  #AdminZONE_controller (solo para users admin)
+  # AdminZONE_controller (solo para users admin)
   get "adminzone/index"
   post "adminzone/index"
   put "adminzone/index"
   get "adminzone/userlist"
   post "adminzone/userlist"
+  
+  # Rutas para manejo de archivos en Students
+  resources :students do
+    get 'download', on: :collection
+  end
+  #match 'students/download' => 'student#download', as: 'download', via: :get
+  
   
   #Otras rutas
   get "lunch_petitions/show"
@@ -19,8 +26,15 @@ SisBec::Application.routes.draw do
 
   get "welcome/index"
   devise_for :users
-  resources :students
+  #resources :students
 
+  #Rutas para el manejo de files ()Fer()
+  
+  get "file/upload_file"
+  get "file/list_file"
+  get "file/destroy_file"
+  get "file/comment_file"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,6 +1,6 @@
 <h1>Listing doc_files</h1>
 
-<table>
+<table class='tabla table table-stripped' >
   <thead>
     <tr>
       <th>Name</th>
@@ -18,7 +18,7 @@
       <tr>
         <td><%= doc_file.name %></td>
         <td><%= doc_file.clarification %></td>
-        <td><%= doc_file.docOwner %></td>
+        <td><%= DocFile.checkFiles(doc_file.docOwner) ? doc_file.docOwner : 'Archivo no encontrado' %></td>
         <td><%= doc_file.student_id %></td>
         <td><%= link_to 'Show', doc_file %></td>
         <td><%= link_to 'Edit', edit_doc_file_path(doc_file) %></td>

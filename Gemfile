@@ -33,7 +33,8 @@ group :doc do
 end
 
 # Gemas agregadas
-gem 'devise', '~> 3.2.4'
+gem 'devise', '~> 3.2.4' # Registro de usuarios
+gem 'will_paginate', '~> 3.0.7' # Paginación
 # Fin gemas agregadas
 
 # Use ActiveModel has_secure_password

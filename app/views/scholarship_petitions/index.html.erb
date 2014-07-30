@@ -1,11 +1,11 @@
-<h1>Listing scholarship_petitions</h1>
+<h1>Listado de solicitudes de becas</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Student</th>
-      <th>Scholarship</th>
-      <th>Approved</th>
+      <th>Alumno</th>
+      <th>Beca</th>
+      <th>Estado</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,8 +16,8 @@
     <% @scholarship_petitions.each do |scholarship_petition| %>
       <tr>
         <td><%= scholarship_petition.student_id %></td>
-        <td><%= scholarship_petition.scholarship_id %></td>
-        <td><%= scholarship_petition.approved %></td>
+        <td><%= scholarship_petition.scholarship_type %></td>
+        <td><%= ScholarshipPetition.defState(scholarship_petition.approved) %></td>
         <td><%= link_to 'Ver', scholarship_petition %></td>
         <td><%= link_to 'Editar', edit_scholarship_petition_path(scholarship_petition) %></td>
         <td><%= link_to 'Eliminar', scholarship_petition, method: :delete, data: { confirm: 'Estás seguro?' } %></td>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>SisBeC - Home</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag :defaults %>		
+	</head>
+
+	<body>
+ 
+    <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+
+	</body>
+</html>

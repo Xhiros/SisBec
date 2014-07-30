@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713225025) do
+ActiveRecord::Schema.define(version: 20140730125145) do
 
   create_table "doc_files", force: true do |t|
     t.string   "name"
@@ -39,18 +39,19 @@ ActiveRecord::Schema.define(version: 20140713225025) do
 
   create_table "scholarship_petitions", force: true do |t|
     t.string   "student_id"
-    t.string   "scholarship_id"
     t.boolean  "approved"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "scholarship_type"
   end
 
   create_table "scholarships", force: true do |t|
     t.string   "student_id"
-    t.string   "starting"
-    t.string   "ending"
+    t.date     "starting",         limit: 255
+    t.date     "ending",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "scholarship_type"
   end
 
   create_table "students", force: true do |t|

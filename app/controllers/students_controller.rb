@@ -1,22 +1,20 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-    
-
+  
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    require 'date'
+    #Debe mostrar toda la info del alumno logueado
+    @student = Student.find(current_user.student.id)
+    # Peticiones de becas del alumno
+    @scholarship_petitions = ScholarshipPetition.where(student_id: @student.id).order('created_at DESC').limit(5)
+    # Becas vigentes actualmente del alumno
+    @scholarships = Scholarship.where(student_id: @student.id).where('ending >= :fin', fin: Date.today).order('created_at DESC')
+    # Archivos subidos por el alumno
+    @docFiles = DocFile.where(student_id: @student.id).order('created_at DESC')
     
-    respond_to do |format|
-      if !current_user.admin
-        format.html { redirect_to root_url, notice: 'Acceso denegado.' }
-        #format.json { render action: 'root', status: :created, location: @student }
-      else
-        format.html { render action: 'index' }
-        #format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # GET /students/1
@@ -28,7 +26,7 @@ class StudentsController < ApplicationController
     #Solo los usuarios "admin" pueden ver y editar otros usuarios
     respond_to do |format| 
       if current_user.admin || (current_user.student.id != @student.id)
-        format.html { redirect_to root_url, notice: 'Acceso denegado.' }
+        format.html { redirect_to root_url, alert: 'Acceso denegado.' }
         #format.json { render action: 'root', status: :created, location: @student }
       else
         format.html { render action: 'show' }
@@ -108,4 +106,22 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:firstName, :lastName, :dni, :career, :otherCareer, :fileNumber, :address, :department, :telephone, :cellphone, :dwelling, :rental, :economicSituation, :children, :dependent, :schoolDays, :familyGroup, :income, :minors, :disabilityOrIllness, :clarifications, :vehicles, :card_id)
     end
+  
+  # Archivos
+  def download
+    #@docFile = params[:docFile]
+    respond_to do |format|
+      format.html { redirect_to students_url }
+      format.json { head :no_content }
+    end
+   # if File.exists?(@docFile.docOwner)
+     # send_file @docFile.docOwner
+      # "#{RAILS_ROOT}/private/students_files/#{@fileNumber}/#{@name}"+'.pdf'
+      #send_file file, type: (mime_type || 'application/octet-stream')
+      #redirect_to students_url, notice: t('view.documents.non_existent')
+   # else
+    #  redirect_to students_url, notice: t('view.documents.non_existent')
+   # end
+  end
+  
 end

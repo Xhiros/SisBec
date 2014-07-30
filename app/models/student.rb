@@ -18,6 +18,10 @@ class Student < ActiveRecord::Base
     return ( Student.where(user_id: id).count == 1 ? true : false )
   end
   def self.countFamily(student)#Cuenta cuantos familiares faltan cargar
-    return (student.familyGroup - Family.where(student_id: student.id).count)    
-  end
+    begin
+      return (student.familyGroup - Family.where(student_id: student.id).count)    
+    rescue
+      return 0
+    end
+  end  
 end

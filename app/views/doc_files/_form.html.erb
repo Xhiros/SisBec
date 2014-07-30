@@ -12,21 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :clarification %><br>
-    <%= f.text_area :clarification %>
+    <%= f.label :name, 'Nombre del archivo' %><br>
+    <%= f.text_field :name, placeholder:'Nombre descriptivo' %>
   </div>
   <div class="field">
     <%= f.label :docOwner %><br>
-    <%= f.text_field :docOwner %>
+    <%= f.file_field :docOwner %>
   </div>
   <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
+    <%= f.label :clarification, 'Aclaraciones:' %><br>
+    <%= f.text_area :clarification %>
   </div>
+  
+  
   <div class="actions">
     <%= f.submit %>
   </div>
